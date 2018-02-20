@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Authors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 150px"><h3>Author Name</h3></th>
+      <th style="width: 750px;"><h3>Books</h3></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @authors.each do |author| %>
+      <td><%= link_to author.name, author %></td>
+      <td>
+        <% author.books.each do |book| %>
+          <%= link_to book.name, book %>,
+        <% end  %>
+      </td>
+      <tr>
+        <td>
+          <%= link_to 'Edit', edit_author_path(author) %>
+          <%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Author', new_author_path %>
